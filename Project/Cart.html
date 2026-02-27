@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Button</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styling for the item and button */
+        .item {
+            margin: 20px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .item-img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .like-button {
+            font-size: 18px;
+            color: grey;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .liked {
+            color: red; /* Change color when item is added to the cart */
+        }
+
+        .cart-container {
+            margin-top: 40px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .cart ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cart li {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .remove-button {
+            margin-left: auto;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .remove-button:hover {
+            background-color: #d32f2f;
+        }
+
+        #total {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Example of an item on the page -->
+    <div class="item">
+        <img src="C:\Users\Administrator\OneDrive\Project\Womens\TraWo1.webp" alt="Clothing Item" class="item-img">
+        <p>Classic Reading</p>
+        <p>₹13,209</p>
+        <button class="like-button" onclick="addToCart('Clothing Item Name', 'item-image.jpg', 13209, this)">
+            <span class="heart">&hearts;</span> Add to Cart
+        </button>
+    </div>
+
+    <!-- Cart section -->
+    <div class="cart-container">
+        <h2>Your Cart</h2>
+        <ul id="cart">
+            <!-- Items added to cart will be displayed here dynamically -->
+        </ul>
+        <p id="total">Total: $0.00</p>
+    </div>
+
+    <script>
+        let cartTotal = 0;
+
+        // Function to add item to the cart
+        function addToCart(itemName, imageUrl, itemPrice, button) {
+            const cart = document.getElementById('cart');
+
+            // Check if the item is already in the cart
+            const existingItem = cart.querySelector(`[data-name="${itemName}"]`);
+            if (existingItem) {
+                alert("This item is already in your cart.");
+                return;
+            }
+
+            // Create a new list item for the cart
+            const listItem = document.createElement('li');
+            listItem.setAttribute('data-name', itemName);
+            listItem.innerHTML = `
+                <img src="${imageUrl}" alt="${itemName}" class="cart-img">
+                <span>${itemName}</span>
+                <span>$${itemPrice.toFixed(2)}</span>
+                <button class="remove-button" onclick="removeFromCart(this, ${itemPrice})">Remove</button>
+            `;
+
+            // Add the new list item to the cart
+            cart.appendChild(listItem);
+
+            // Update the cart total
+            cartTotal += itemPrice;
+            document.getElementById('total').innerText = `Total: $${cartTotal.toFixed(2)}`;
+
+            // Add 'liked' class and disable the button
+            button.classList.add('liked');
+            button.disabled = true; // Disable button after adding to cart
+        }
+
+        // Function to remove an item from the cart
+        function removeFromCart(button, itemPrice) {
+            const listItem = button.parentElement;
+            listItem.remove();
+
+            // Update the cart total
+            cartTotal -= itemPrice;
+            document.getElementById('total').innerText = `Total: $${cartTotal.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>

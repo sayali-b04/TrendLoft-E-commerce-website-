@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #fdfbfd, #fbecfc);
+        }
+
+        .container {
+            background-color: #fbf7f7;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            width: 30%;
+            height: 60%;
+        }
+
+     
+        .container h2 {
+            color: #060606;
+            margin-bottom: 20px;
+        }
+
+        .container input[type="email"],
+        .container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+
+        /* Lost password link */
+        .lost-password-link {
+            font-size: 0.9em;
+            color: #646564;
+            text-decoration: none;
+        }
+        .lost-password-link:hover {
+            text-decoration: underline;
+            color: #8B0000;
+        }
+
+        /* Buttons */
+        .btn-field {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-field button {
+            flex-basis: 40%;
+            background: rgb(19, 19, 19);
+            color: white;
+            height: 40px;
+            border-radius: 20px;
+            margin-top: 30px;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            transition: background 1s;
+        }
+
+        /* Different color for Sign Up button */
+        .container button.signup-btn {
+            background-color: #c8c9c8;
+        }
+
+        .container button:hover {
+            background-color: #aaa;
+        }
+
+        .container button a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign In</h2>
+        <form id="signinForm" onsubmit="return validateSignIn()">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <a href="#" class="lost-password-link" onclick="lostPassword()">Lost Password Click Here!</a>
+            <div class="btn-field">
+                <button type="button" class="signup-btn" onclick="signUp()">Sign Up</button>
+                <button type="submit">
+                    <a href="C:\Users\Administrator\OneDrive\Project\Home.html" target="_top">
+                        Sign In </a></button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateSignIn() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Email validation
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Password validation
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            alert("Sign-in successful!");
+            return true;
+        }
+
+        function lostPassword() {
+            alert("Redirecting to password recovery...");
+            // Code for redirecting to password recovery page can go here
+        }
+
+        function signUp() {
+            alert("Redirecting to sign-up page...");
+            // Code for redirecting to sign-up page can go here
+        }
+    </script>
+</body>
+</html>

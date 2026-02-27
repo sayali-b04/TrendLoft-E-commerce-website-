@@ -1,0 +1,128 @@
+*{
+    margin:0%;
+    padding: 0%;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    font-weight: lighter;
+}
+
+/*single product*/
+
+#prodetails{
+    display:flex;
+    background: linear-gradient(to bottom, #ffffff, #f6e9f7);
+    gap: 0;
+}
+ 
+/*Prouct Image*/
+#prodetails .single-pro-image{
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    padding:60px 0px 0px 60px;
+}
+
+/*Product Details*/
+
+/*#ProD{
+    background-color: #eee;
+}*/
+
+.single-pro-details{
+    padding-top: 30px;
+    padding-left:50px;
+    align-items: center;
+}
+
+.proName h2{
+    padding: 40px 0 20px 0;
+    font-size: 30px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.proName p{
+    margin-bottom: 10px;
+    font-weight: lighter;
+}
+
+.proName .offer{
+    text-decoration:line-through;
+}
+
+.discount{
+    color: rgb(125, 126, 127);
+}
+
+
+.sizeInfo{
+    margin: 10px 0 10px 0;
+}
+.sizeInfo select{
+    margin:10px 0 10px 0;
+    display:flex;
+    padding: 5px ;
+    font-size: 15px;
+    width: 170px;
+    height: 30px;
+    color: white;
+    background-color:rgb(122, 120, 120);
+    border: none;
+    border-radius: 5px;
+}
+
+#prodetails .single-pro-details input{
+    width: 80px;
+    height: 28px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    color: white;
+    background-color:rgb(123, 122, 122);
+    border: none;
+    border-radius: 5px;
+}
+
+#prodetails .single-pro-details input:focus{
+    outline: none;
+}
+
+.icon{
+    margin: 20px 0 20px 0;
+}
+
+.icon button{
+    width: 200px;
+    height: 30px;
+    background-color:black;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    color: white;
+}
+.icon button{
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    color:white;
+    justify-content: space-between;
+}
+
+.prodetails{
+    margin: 10px;
+}
+
+.prodetails1{
+    padding: 10px;
+}
+
+.prodetails1 h4{
+    color: rgb(161, 159, 159);
+    font-weight: lighter;
+}
+
+.prodetails1 p{
+    font-weight: lighter;
+}
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Order Status</title>
+
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.form-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #161718;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #003973;
+}
+
+.required {
+    color: red;
+}
+
+#error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+        </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Check Order Status</h2>
+        <p>Please enter the required information below to check your order status.</p>
+
+        <form id="order-form" action="#" method="POST" onsubmit="return validateForm()">
+            <label for="order-number">Order Number <span class="required">*</span></label>
+            <input type="text" id="order-number" name="order-number" required>
+
+            <label for="contact-info">Phone number or email address <span class="required">*</span></label>
+            <input type="text" id="contact-info" name="contact-info" required>
+
+            <span id="error-message" style="color: red; display: none;">Please enter a valid order number and phone number or email address.</span>
+
+            <button type="submit">Track Order</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            const orderNumber = document.getElementById('order-number').value;
+            const contactInfo = document.getElementById('contact-info').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Check if order number is not empty and is alphanumeric
+            const orderNumberValid = /^[a-zA-Z0-9]+$/.test(orderNumber);
+
+            // Check if contact info is either a valid phone number or email
+            const phoneRegex = /^[0-9]{10}$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const contactInfoValid = phoneRegex.test(contactInfo) || emailRegex.test(contactInfo);
+
+            if (!orderNumberValid || !contactInfoValid) {
+                errorMessage.style.display = 'block';  // Show the error message
+                return false;  // Prevent form submission
+            }
+
+            errorMessage.style.display = 'none';  // Hide the error message
+            return true;  // Allow form submission
+        }
+    </script>
+</body>
+</html>

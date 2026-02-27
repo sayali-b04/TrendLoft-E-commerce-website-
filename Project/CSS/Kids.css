@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    font-weight: lighter;
+}
+
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    background-color: #f8f8f8;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.top-bar span {
+    margin: 0 100px;
+}
+
+.top-bar1{
+    display: flex;
+    align-items: center;
+    background-color:white;
+    padding: 10px;
+    font-size: 14px;
+    justify-content: space-between;
+
+}
+
+/*icons navbar*/
+.navbar1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 10px;
+}
+
+/*menubar*/
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links a {
+    margin: 0 30px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    justify-items: center;
+}
+
+/*banner section*/
+
+.banner-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffe6f0;
+}
+
+.banner-section img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+
+/*Product Categories*/
+
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background-color: #ffffff;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card img {
+    width: 100%;
+    height:auto;
+}
+
+.product-card h2 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.product-card .price {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.product-card .offer {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.wishlist-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.wishlist-icon:hover {
+    color: #ff4757;
+}

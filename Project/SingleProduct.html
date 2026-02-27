@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="CSS\SingleProduct.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    .error {
+      color: red;
+      margin-top: 5px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <section id="prodetails" class="section-p1">
+    <div class="single-pro-image">
+      <img src="Womens\TraWo1.webp" width="80%" height="90%" id="MainImg" alt="Neria Gotapatti Tier Suit Set">
+    </div>
+
+    <section id="ProD">
+
+      <div class="single-pro-details">
+
+        <div class="proName">
+          <h2>Neria Gotapatti Tier Suit Set</h2>
+          <p id="product-price" class="price" style="float: left; width: 100px;">₹ 2,850.00</p>
+          <p class="offer" style="float: left; width: 100px;"> ₹ 14,250.00</p>
+          <p class="discount"> UP to 80% off</p>
+
+        </div>
+
+        <hr>
+
+        <div class="sizeInfo">
+          <h3>Select Size</h3>
+          <select id="product-size">
+            <option>Select Size</option>
+            <option>XS</option>
+            <option>S</option>
+            <option>M</option>
+            <option>XM</option>
+            <option>L</option>
+          </select>
+          <p class="error" id="size-error"></p>
+
+          <h3>Quantity</h3>
+          <input type="number" id="product-quantity" value="1" min="1">
+          <p class="error" id="quantity-error"></p>
+        </div>
+
+
+
+        <div class="icon">
+          <button onclick="addToWishlist()"> 
+            <span class="material-icons">favorite_border</span>Wishlist
+          </button>
+          <button onclick="addToCart()"> 
+            <span class="material-icons">shopping_cart</span> Add to Cart
+          </button
+        </div>
+
+        <h3>Product Details</h3>
+        <div class="prodetails">
+          <div class="prodetails1" style="width:50%">
+            <h4>Fabric</h4>
+            <p id="product-fabric">Cotton</p>
+            <hr>
+          </div>
+
+          <div class="prodetails1" style="width:50%">
+            <h4>Sleeves</h4>
+            <p>Elbow</p>
+            <hr>
+          </div>
+
+          <div class="prodetails1" style="width:50%">
+            <h4>Color</h4>
+            <p id="product-color">Orange</p>
+            <hr>
+          </div>
+
+          <div class="prodetails1" style="width:50%">
+            <h4>Pattern</h4>
+            <p>Angrakha</p>
+            <hr>
+          </div>
+
+          <div class="prodetails1" style="width:50%">
+            <h4>Material</h4>
+            <p>Wit Dupatta</p>
+          </div>
+          <hr>
+
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Data structures to store wishlist and cart items
+let wishlist = [];
+let cart = [];
+
+// Fetch product details dynamically
+function getProductDetails() {
+  return {
+    name: document.querySelector(".proName h2").innerText,
+    price: document.getElementById("product-price").innerText,
+    fabric: document.getElementById("product-fabric").innerText,
+    color: document.getElementById("product-color").innerText,
+    size: document.getElementById("product-size").value,
+    quantity: parseInt(document.getElementById("product-quantity").value, 10),
+  };
+}
+
+// Validate size and quantity
+function validateInputs() {
+  let size = document.getElementById("product-size").value;
+  let quantity = document.getElementById("product-quantity").value;
+  let isValid = true;
+
+  if (size === "Select Size") {
+    document.getElementById("size-error").innerText = "Please select a size.";
+    isValid = false;
+  } else {
+    document.getElementById("size-error").innerText = "";
+  }
+
+  if (quantity <= 0 || isNaN(quantity)) {
+    document.getElementById("quantity-error").innerText = "Please enter a valid quantity.";
+    isValid = false;
+  } else {
+    document.getElementById("quantity-error").innerText = "";
+  }
+
+  return isValid;
+}
+
+// Add product to wishlist
+function addToWishlist() {
+  if (!validateInputs()) return;
+
+  const product = getProductDetails();
+  const alreadyInWishlist = wishlist.find(item => item.name === product.name);
+
+  if (alreadyInWishlist) {
+    alert("Product is already in your wishlist!");
+  } else {
+    wishlist.push(product);
+    alert("Product added to your wishlist!");
+  }
+
+  updateWishlistDisplay();
+}
+
+// Add product to cart
+function addToCart() {
+  if (!validateInputs()) return;
+
+  const product = getProductDetails();
+  const alreadyInCart = cart.find(item => item.name === product.name);
+
+  if (alreadyInCart) {
+    alert("Product is already in your cart!");
+  } else {
+    cart.push(product);
+    alert("Product added to your cart!");
+  }
+
+  updateCartDisplay();
+}
+
+// Update wishlist display
+function updateWishlistDisplay() {
+  const wishlistContainer = document.getElementById("wishlist-items");
+  wishlistContainer.innerHTML = "";
+
+  wishlist.forEach((item, index) => {
+    wishlistContainer.innerHTML += `
+      <div>
+        <h4>${item.name}</h4>
+        <p>Price: ${item.price}</p>
+        <p>Fabric: ${item.fabric}</p>
+        <p>Color: ${item.color}</p>
+        <p>Size: ${item.size}</p>
+        <button onclick="removeFromWishlist(${index})">Remove</button>
+        <hr>
+      </div>
+    `;
+  });
+}
+
+// Update cart display
+function updateCartDisplay() {
+  const cartContainer = document.getElementById("cart-items");
+  cartContainer.innerHTML = "";
+
+  cart.forEach((item, index) => {
+    cartContainer.innerHTML += `
+      <div>
+        <h4>${item.name}</h4>
+        <p>Price: ${item.price}</p>
+        <p>Fabric: ${item.fabric}</p>
+        <p>Color: ${item.color}</p>
+        <p>Size: ${item.size}</p>
+        <p>Quantity: ${item.quantity}</p>
+        <button onclick="removeFromCart(${index})">Remove</button>
+        <hr>
+      </div>
+    `;
+  });
+}
+
+// Remove product from wishlist
+function removeFromWishlist(index) {
+  wishlist.splice(index, 1);
+  updateWishlistDisplay();
+}
+
+// Remove product from cart
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCartDisplay();
+}
+
+    </script>
+
+</body>
+
+</html>

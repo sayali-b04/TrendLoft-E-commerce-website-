@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #wishlist-container {
+      padding: 20px;
+    }
+
+    .wishlist-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px;
+      margin-bottom: 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .wishlist-item img {
+      width: 80px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .wishlist-item h4 {
+      margin: 0;
+      flex: 1;
+    }
+
+    .wishlist-item button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      background-color: #ff5252;
+      color: white;
+    }
+
+    .wishlist-item .details {
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="icons">
+    <a href="javascript:history.back()" style="text-decoration: none; color: black;">
+      <span class="material-icons">arrow_back</span> 
+    </a>
+  </div>
+  
+  <h1>My Wishlist</h1>
+  <div id="wishlist-container"></div>
+
+  <script>
+    // Load wishlist from localStorage
+    function loadWishlist() {
+      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      const wishlistContainer = document.getElementById("wishlist-container");
+
+      wishlistContainer.innerHTML = ""; // Clear previous content
+
+      if (wishlist.length === 0) {
+        wishlistContainer.innerHTML = "<p>Your wishlist is empty!</p>";
+        return;
+      }
+
+      wishlist.forEach((item, index) => {
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "wishlist-item";
+        itemDiv.innerHTML = `
+          <div class="details">
+            <img src="${item.img}" alt="${item.name}">
+            <h4>${item.name} - ${item.price}</h4>
+          </div>
+          <button onclick="removeFromWishlist(${index})">Remove</button>
+        `;
+        wishlistContainer.appendChild(itemDiv);
+      });
+    }
+
+    // Remove from wishlist function
+    function removeFromWishlist(index) {
+      const wishlist = JSON.parse(localStorage.getItem("wishlist"));
+      wishlist.splice(index, 1); // Remove item by index
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      loadWishlist(); // Reload wishlist
+    }
+
+    // Initialize wishlist display
+    loadWishlist();
+  </script>
+</body>
+
+</html>

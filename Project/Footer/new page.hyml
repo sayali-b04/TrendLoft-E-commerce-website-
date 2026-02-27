@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="help-center">
+        <header>
+            <h1>Help Center</h1>
+            <input type="text" placeholder="How can we help you?">
+        </header>
+        <div class="browse-topics">
+            <h2>Browse Topics</h2>
+            <div class="topics-grid">
+                <div class="topic-card">Account Related</div>
+                <div class="topic-card">Gift Card Related</div>
+                <div class="topic-card">Order Related</div>
+                <div class="topic-card">Others</div>
+                <div class="topic-card">Payments</div>
+                <div class="topic-card">Returns and Cancellations</div>
+                <div class="topic-card">Shipping and Returns Policy</div>
+                <div class="topic-card">Shopping</div>
+            </div>
+        </div>
+        <div class="more-help">
+            <h3>Need more help?</h3>
+            <button>Write to us</button>
+        </div>
+    </div>
+</body>
+</html>

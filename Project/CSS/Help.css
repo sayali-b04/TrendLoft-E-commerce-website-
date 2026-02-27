@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.help-center {
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+header h1 {
+    color: #E6007E;
+    margin-bottom: 20px;
+}
+
+.browse-topics h2 {
+    margin: 20px 0;
+    font-size: 24px;
+}
+
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.topic-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.topic-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.topic-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.topic-card span {
+    font-size: 16px;
+    font-weight: 500;
+}
+ 
